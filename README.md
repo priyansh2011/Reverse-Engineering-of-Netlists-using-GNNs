@@ -29,13 +29,7 @@ The following scripts are required for the conversion:
 
 `./Parsers/netlist_to_graph_re.pl`: a Perl script that reads all of the designs (Synthesized Gate-level Netlists) in a given dataset and converts the dataset into a single graph. It assigns unique numerical IDs (0 to N-1) to the nodes (gates). N represents the total number of nodes (gates) in the dataset. The list of nodes in the training set will be dumped in `tr.txt`. The list of nodes in the testing set will be dumped in `te.txt`. The list of nodes in the validation set will be dumped in `va.txt`. The extracted features will be dumped in `feat.txt`. The existence of an edge i between two vertices u and v is represented by the entry of ith line in `row.txt` (representing u's ID) and the entry of the ith line in `col.txt` (representing v's ID). The `row_tr.txt` and `col_tr.txt` are created to identify the edges exclusive to the training set.
 
-`./Parsers/graph_parser.py`: a Python script that processes the files created by the Perl parser and generates the files required by GraphSAINT. It will mainly create the following files:  
-`dataset_log.txt`: log file with detailed information about the dataset.  
-`adj_full.npz`: a sparse matrix in CSR format, stored as a `scipy.sparse.csr_matrix`. The shape is N by N.  
-`adj_train.npz`: a sparse matrix in CSR format, stored as a `scipy.sparse.csr_matrix`. The shape is also N by N. However, non-zeros in the matrix only correspond to edges connecting two training nodes.  
-`role.json`: a dictionary of three keys. Key `'tr'` corresponds to the list of all training node indices. Key `va` corresponds to the list of all validation node indices. Key `te` corresponds to the list of all test node indices.  
-`class_map.json`: a dictionary of length N. Each key is a node index, and each value is a length C binary list. C represents the number of classes which is 5 in our case, i.e., label 0 for adders, label 1 for multipliers, label 2 for control nodes, label 3 for subtractor nodes, and label 4 for comparator nodes. 
-`feats.npy`: a `numpy` array of shape N by F. F is the length of the feature vector. For the case of our dataset, F=34.
+`./Parsers/graph_parser.py`: a Python script that processes the files created by the Perl parser and generates the files required by GraphSAINT. The more details on the file structure created can be found in detail in the graphSAINT repository.
 
 **Running the Conversion code**   
 1) Create and activate conda environment with the required dependencies or a virtual environment or as per choice.
