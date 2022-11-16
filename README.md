@@ -1,4 +1,4 @@
-# Graph Neural Networks for Reverse Engineering of Gate-Level Netlists
+
 Priyansh (B19CSE067) and Praneet Thakur (B19CSE066)
 
 ### Dependencies
